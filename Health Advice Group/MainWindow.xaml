@@ -72,7 +72,7 @@
                 </Rectangle.Fill>
             </Rectangle>
         </Border>
-        <TextBox Name="txtbox_Username" TextWrapping="Wrap" Margin="318,166,318,249" BorderBrush="#FF112D4E" BorderThickness="1.5,1.5,1.5,1.5"/>
+        <TextBox Name="txtBox_Username" TextWrapping="Wrap" Margin="318,166,318,249" BorderBrush="#FF112D4E" BorderThickness="1.5,1.5,1.5,1.5"/>
         <PasswordBox Name="pasBox_Password" Margin="318,207,318,207" BorderBrush="#FF112D4E" BorderThickness="1.5,1.5,1.5,1.5"/>
         <Label Content="Password" Margin="361,185,361,224" HorizontalContentAlignment="Center" Foreground="#FF3F72AF" FontFamily="Yu Gothic" FontWeight="Bold"/>
         <Label Content="Username" Margin="361,141,361,268" HorizontalContentAlignment="Center" Foreground="#FF3F72AF" FontFamily="Yu Gothic" FontWeight="Bold"/>

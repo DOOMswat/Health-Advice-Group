@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using MySql.Data.MySqlClient;
 namespace Health_Advice_Group
 {
     /// <summary>
@@ -27,7 +27,9 @@ namespace Health_Advice_Group
 
         private void btn_Login_Click(object sender, RoutedEventArgs e)
         {
-
+            MySqlConnection conn;
+            string username = txtox_Username.Text;
+            string password = pasBox_Password.Password;
         }
 
         private void btn_Register_Click(object sender, RoutedEventArgs e)
