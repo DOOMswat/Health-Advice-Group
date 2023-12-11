@@ -24,5 +24,15 @@ namespace Health_Advice_Group
         {
             InitializeComponent();
         }
+
+        private void btn_Login_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_Register_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

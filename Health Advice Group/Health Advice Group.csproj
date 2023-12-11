@@ -8,4 +8,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="HAGLOGO2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="HAGLOGO2.png" />
+  </ItemGroup>
+
 </Project>
