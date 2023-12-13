@@ -15,14 +15,13 @@ using System.Windows.Shapes;
 namespace Health_Advice_Group
 {
     /// <summary>
-    /// Interaction logic for Homepage.xaml
+    /// Interaction logic for registerWindow.xaml
     /// </summary>
-    public partial class Homepage : Window
+    public partial class registerWindow : Window
     {
-        public Homepage(string username)
+        public registerWindow()
         {
             InitializeComponent();
         }
-
     }
 }
