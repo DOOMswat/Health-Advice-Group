@@ -27,39 +27,74 @@ namespace Health_Advice_Group
 
         private void btn_Login_Click(object sender, RoutedEventArgs e)
         {
-            MySqlConnection conn;
-            using (conn = new MySqlConnection(session.connStr))
+            try
             {
-                conn.Open();
-                string query = "SELECT * FROM Customer WHERE username =" +
-                    " @Username AND Password = SHA(@Password)";
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@Username", txtBox_Username.Text.ToUpper());
-                cmd.Parameters.AddWithValue("@Password", pasBox_Password.Password);
-
-                using (MySqlDataReader rdr = cmd.ExecuteReader())
+                MySqlConnection conn;
+                using (conn = new MySqlConnection(session.connStr))
                 {
-                    if (rdr.Read())
-                    {
-                        Homepage homepage = new Homepage(txtBox_Username.Text.ToUpper());
-                        homepage.Show();
-                        this.Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid username or password");
-                    }
+                    conn.Open();
+                    string query = "SELECT * FROM Customer WHERE username =" +
+                        " @Username AND Password = SHA(@Password)";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@Username", txtBox_Username.Text.ToUpper());
+                    cmd.Parameters.AddWithValue("@Password", pasBox_Password.Password);
 
+                    using (MySqlDataReader rdr = cmd.ExecuteReader())
+                    {
+                        if (rdr.Read())
+                        {
+                            getUserID();
+                            Homepage homepage = new Homepage(txtBox_Username.Text.ToUpper());
+                            homepage.Show();
+                            this.Close();
+                        }
+                        else
+                        {MessageBox.Show("Invalid username or password");}
+                    }
                 }
 
+            }
+            catch (Exception ex) {MessageBox.Show("Error: " + ex);}
+        }
 
+        private void getUserID()
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(session.connStr))
+                {
+                    conn.Open();
+                    string query = "SELECT userID FROM Customer WHERE username = @Username";
+                    using(MySqlCommand cmd = new MySqlCommand( query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Username", txtBox_Username.Text.ToUpper());
+                        
+                        using (MySqlDataReader rdr = cmd.ExecuteReader())
+                        {
+                            if (rdr.Read())
+                            {
+                                string userID = rdr["userID"].ToString();
+                                session.userID = userID;
+
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex);
             }
 
         }
 
+
         private void btn_Register_Click(object sender, RoutedEventArgs e)
         {
-            //Implement register window.
+            registerWindow registerWindow = new registerWindow();
+            registerWindow.Show();
+            this.Close();
         }
     }
 }

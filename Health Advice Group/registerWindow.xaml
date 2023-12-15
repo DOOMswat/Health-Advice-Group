@@ -5,8 +5,155 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Health_Advice_Group"
         mc:Ignorable="d"
-        Title="registerWindow" Height="450" Width="800">
+        Title="registerWindow" Height="530" Width="534">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="6" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
     <Grid>
-        
+        <Rectangle HorizontalAlignment="Center" Width="244" Height="134" VerticalAlignment="Top" Margin="0,5,0,0">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/HAGLOGO2.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Grid Margin="171,122,171,10">
+            <TextBox Name="txt_Username" HorizontalAlignment="Center" Margin="0,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" TextAlignment="Center" Height="23" SelectionBrush="#00000000" SelectionTextBrush="#00000000" Foreground="Black" Background="#00000000" BorderBrush="#00000000"/>
+            <TextBox Name="txt_Forename" HorizontalAlignment="Center" Margin="0,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" BorderBrush="#00000000" TextAlignment="Center" Height="23" Background="#00000000" SelectionBrush="#00000000" SelectionTextBrush="#00000000" Foreground="Black"/>
+            <TextBox Name="txt_Surname" HorizontalAlignment="Center" Margin="0,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" BorderBrush="#00000000" TextAlignment="Center" Height="23" SelectionBrush="#00000000" SelectionTextBrush="#00000000" Background="#00000000"/>
+            <TextBox Name="txt_Email" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="214"  BorderBrush="#00000000" TextAlignment="Center" Height="23" Background="#00000000" SelectionBrush="#00000000" SelectionTextBrush="#00000000"/>
+            <PasswordBox Name="txt_Password" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  HorizontalAlignment="Center" Margin="0,225,0,0" VerticalAlignment="Top" Width="214"  BorderBrush="#00000000" Height="22" Background="#00000000" SelectionBrush="#00000000" SelectionTextBrush="#00000000"/>
+            <PasswordBox x:Name="txt_ConfirmPassword" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  HorizontalAlignment="Center" Margin="0,274,0,0" VerticalAlignment="Top" Width="214"  BorderBrush="#00000000" Height="23" Background="#00000000" SelectionBrush="#00000000" SelectionTextBrush="#00000000"/>
+
+
+            <Button Name="btnRegister" Content="Register" Style="{DynamicResource RoundedButtonStyle}" HorizontalAlignment="Center" Margin="0,309,0,0" VerticalAlignment="Top" Width="146" Click="btnRegister_Click" Height="27" BorderBrush="#FF112D4E" BorderThickness="2,2,2,2" Foreground="#FF3F72AF" FontFamily="Yu Gothic" FontWeight="Bold" FontSize="14">
+                <Button.Background>
+                    <SolidColorBrush Opacity="0.83"/>
+                </Button.Background>
+            </Button>
+            <Button Name="btn_login" Content="Already registered? Log in" Style="{DynamicResource RoundedButtonStyle}" HorizontalAlignment="Center" Margin="0,336,0,0" VerticalAlignment="Top" Width="146" Click="LOGINBUTTON" Background="{x:Null}" Foreground="#FF3F72AF" FontWeight="Light" FontFamily="Yu Gothic"/>
+            <Label Content="Confirm Password" HorizontalAlignment="Center" Margin="0,248,0,0" VerticalAlignment="Top" Width="146" HorizontalContentAlignment="Center" FontFamily="Yu Gothic" Foreground="#FF3F72AF"/>
+            <Label Content="Password" HorizontalAlignment="Center" Margin="0,199,0,0" VerticalAlignment="Top" Width="146" HorizontalContentAlignment="Center" FontFamily="Yu Gothic" Foreground="#FF3F72AF"/>
+            <Label Content="Email address" HorizontalAlignment="Center" Margin="0,150,0,0" VerticalAlignment="Top" Width="146" HorizontalContentAlignment="Center" FontFamily="Yu Gothic" Foreground="#FF3F72AF"/>
+            <Label Content="Last name" HorizontalAlignment="Center" Margin="0,101,0,0" VerticalAlignment="Top" Width="146" HorizontalContentAlignment="Center" FontFamily="Yu Gothic" Foreground="#FF3F72AF"/>
+            <Label Content="First name" HorizontalAlignment="Center" Margin="0,52,0,0" VerticalAlignment="Top" Width="146" HorizontalContentAlignment="Center" FontFamily="Yu Gothic" Foreground="#FF3F72AF"/>
+            <Label Content="Username" HorizontalAlignment="Center" VerticalAlignment="Top" Width="146" HorizontalContentAlignment="Center" FontFamily="Yu Gothic" Foreground="#FF3F72AF"/>
+            <Rectangle HorizontalAlignment="Center" Height="1" Margin="0,297,0,0" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle HorizontalAlignment="Center" Height="1" Margin="0,247,0,0" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle HorizontalAlignment="Center" Height="1" Margin="0,198,0,0" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle HorizontalAlignment="Center" Height="1" Margin="0,150,0,0" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle HorizontalAlignment="Center" Height="1" Margin="0,101,0,0" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle HorizontalAlignment="Center" Height="1" Margin="0,52,0,0" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+        </Grid>
+
+
+
     </Grid>
 </Window>
