@@ -1,0 +1,233 @@
+﻿<Window x:Class="Health_Advice_Group.SymptomAssessment"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Health_Advice_Group"
+        mc:Ignorable="d"
+        Title="SymptomAssessment" Height="600" Width="428">
+    <Grid>
+        <Rectangle HorizontalAlignment="Center" Width="244" Height="134" VerticalAlignment="Top">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/HAGLOGO2.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+
+
+        <ListBox Margin="84,118,84,108">
+            <CheckBox Name="CB_RespiratoryIssues" Content="Respiratory Issues"/>
+            <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF" IsEnabled="False">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <CheckBox Name="CB_Allergies" Content="Allergies"/>
+            <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <CheckBox Name="CB_HeatRelatedIllnesses" Content="Heat-Related Illnesses"/>
+            <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <CheckBox Name="CB_SkinConditions" Content="Skin Conditions"/>
+            <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <CheckBox Name="CB_CardiovascularIssues" Content="Cardiovascular Issues"/>
+            <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <CheckBox Name="CB_JointPJointPain" Content="Joint Joint Pain"/>
+            <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <CheckBox Name="CB_Dehydration" Content="Dehydration"/>
+            <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <CheckBox Name="CB_MentalHealth" Content="Mental Health"/>
+            <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <CheckBox Name="CB_FrostbiteandHypothermia" Content="Frostbite and Hypothermia"/>
+            <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <CheckBox Name="CB_HeatRelatedSkinConditions" Content="Heat-Related Skin Conditions"/>
+            <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <CheckBox Name="CB_AirQualityRelatedRespiratoryIssues" Content="Air Quality-Related Respiratory Issues"/>
+            <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <CheckBox Name="CB_InfectiousDiseases" Content="Infectious Diseases"/>
+            <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <CheckBox Name="CB_InsectBorneDiseases" Content="Insect-Borne Diseases"/>
+            <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <CheckBox Name="CB_DehydrationRelatedIssues" Content="Dehydration-Related Issues"/>
+            <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <CheckBox Name="CB_MigrainesandHeadaches" Content="Migraines and Headaches"/>
+            <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <CheckBox Name="CB_SeasonalAllergicRhinitis" Content="Seasonal Allergic Rhinitis"/>
+            <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <CheckBox Name="CB_EyeIrritations" Content="Eye Irritations"/>
+            <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <CheckBox Name="CB_GastrointestinalIssues" Content="Gastrointestinal Issues"/>
+            <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <CheckBox Name="CB_SleepDisturbances" Content="Sleep Disturbances"/>
+            <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <CheckBox Name="CB_BloodPressureFluctuations" Content="Blood Pressure Fluctuations"/>
+        </ListBox>
+        <Button Content="Button" HorizontalAlignment="Center" Margin="0,499,0,0" VerticalAlignment="Top" Height="39" Width="244"/>
+
+
+    </Grid>
+</Window>

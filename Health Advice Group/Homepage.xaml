@@ -6,7 +6,131 @@
         xmlns:local="clr-namespace:Health_Advice_Group"
         mc:Ignorable="d"
         Title="Homepage" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="6" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+
+    </Window.Resources>
     <Grid>
-        
+        <Grid HorizontalAlignment="Left" Width="235" Height="434" VerticalAlignment="Center">
+            <Grid.Background>
+                <ImageBrush/>
+            </Grid.Background>
+            <Rectangle HorizontalAlignment="Center" Width="220" Margin="0,0,0,324" Height="120" VerticalAlignment="Bottom">
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource="/HAGLOGO2.png"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <TextBox x:Name="txt_searchbar" GotFocus="TextBox_GotFocus" HorizontalAlignment="Center" Margin="0,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" TextAlignment="Center" Height="23" SelectionBrush="Black" SelectionTextBrush="#00000000" Foreground="#FF3F72AF" Background="#00000000" BorderBrush="#00000000" Text="Search" FontWeight="Bold" FontFamily="Yu Gothic"/>
+            <Rectangle HorizontalAlignment="Center" Height="1" Margin="0,133,0,0" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle HorizontalAlignment="Center" Height="1" Margin="0,339,0,0" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Grid HorizontalAlignment="Center" Height="96" VerticalAlignment="Top" Width="168" Margin="0,139,0,0">
+                <Label x:Name="lbl_temp" Content="Temp" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Width="92" Height="43"/>
+                <Label x:Name="lbl_date" Content="Date time" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Width="168" FontFamily="Yu Gothic" Height="32" FontWeight="Bold"/>
+                <Label x:Name="lbl_text" Content="text" HorizontalAlignment="Center" Margin="0,53,0,0" VerticalAlignment="Top" FontSize="14" Width="168" FontFamily="Yu Gothic" Height="43" FontWeight="Bold"/>
+
+            </Grid>
+            <Label x:Name="lbl_location" Content="Location" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" Width="220" FontFamily="Yu Gothic" Height="79" Margin="0,345,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+        </Grid>
+        <Grid Margin="235,10,10,10">
+            <Grid.Background>
+                <SolidColorBrush Color="#FF3F72AF"/>
+            </Grid.Background>
+            <TabControl>
+                <TabItem Header="Homepage">
+                    <Grid>
+                        <Label Name="lbl_welcomeMsg" Content="Label" HorizontalAlignment="Center" VerticalAlignment="Top" Width="285" Height="43" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16"/>
+
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Air Quality">
+                </TabItem>
+                <TabItem Header="Your Area">
+                </TabItem>
+                <TabItem Header="Your Symptoms">
+                </TabItem>
+            </TabControl>
+
+
+
+
+
+
+        </Grid>
+
     </Grid>
 </Window>

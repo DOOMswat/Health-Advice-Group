@@ -42,7 +42,8 @@ namespace Health_Advice_Group
                         if (userCount > 0){MessageBox.Show("Username already exists.");return;}
                     }
 
-                    string insertCustomerQuery = "INSERT INTO customer (username, firstName, lastName, email, password) " +
+                    string insertCustomerQuery = "INSERT INTO customer (username, " +
+                        "firstName, lastName, email, password) " +
                         "VALUES(@userName,@firstName,@lastName,@emailAddress,SHA(@passWord));";
                     MySqlCommand insertCustomerCommand = new MySqlCommand(@insertCustomerQuery, conn);
                     insertCustomerCommand.Parameters.AddWithValue("@userName", txt_Username.Text.ToUpper());
@@ -51,6 +52,10 @@ namespace Health_Advice_Group
                     insertCustomerCommand.Parameters.AddWithValue("@emailAddress", txt_Email.Text);
                     insertCustomerCommand.Parameters.AddWithValue("@passWord", txt_ConfirmPassword.Password);
                     insertCustomerCommand.ExecuteNonQuery();
+                    MessageBox.Show("Account sucessfully created");
+                    LoginWindow loginWindow = new LoginWindow();
+                    loginWindow.Show();
+                    this.Close();
                 }
 
 

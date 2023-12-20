@@ -41,15 +41,19 @@ namespace Health_Advice_Group
 
                     using (MySqlDataReader rdr = cmd.ExecuteReader())
                     {
-                        if (rdr.Read())
+                        if (rdr.Read()) 
                         {
-                            getUserID();
+                            getUserDetails();
                             Homepage homepage = new Homepage(txtBox_Username.Text.ToUpper());
+                            SymptomAssessment symptomAssessment = new SymptomAssessment();
+                            symptomAssessment.Show();
                             homepage.Show();
                             this.Close();
                         }
                         else
-                        {MessageBox.Show("Invalid username or password");}
+                        {
+                            MessageBox.Show("Invalid username or password");
+                        }
                     }
                 }
 
@@ -57,14 +61,14 @@ namespace Health_Advice_Group
             catch (Exception ex) {MessageBox.Show("Error: " + ex);}
         }
 
-        private void getUserID()
+        private void getUserDetails()
         {
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(session.connStr))
                 {
                     conn.Open();
-                    string query = "SELECT userID FROM Customer WHERE username = @Username";
+                    string query = "SELECT userID, firstName, lastName, email FROM Customer WHERE username = @Username";
                     using(MySqlCommand cmd = new MySqlCommand( query, conn))
                     {
                         cmd.Parameters.AddWithValue("@Username", txtBox_Username.Text.ToUpper());
@@ -74,18 +78,18 @@ namespace Health_Advice_Group
                             if (rdr.Read())
                             {
                                 string userID = rdr["userID"].ToString();
+                                string firstName = rdr["firstName"].ToString();
+                                string lastName = rdr["lastName"].ToString() ;
                                 session.userID = userID;
-
+                                session.fistName = firstName;
+                                session.LastName = lastName;
                             }
                         }
 
                     }
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex);
-            }
+            catch (Exception ex){MessageBox.Show("Error: " + ex);}
 
         }
 
