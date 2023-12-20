@@ -16,9 +16,50 @@ CREATE TABLE Staff (
     Password VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE Customerconditions (
+    customerConditionsID INT PRIMARY KEY auto_increment,
+    conditionID INT NOT NULL,
+    customerID INT,
+    FOREIGN KEY (conditionID) REFERENCES healthconditions(conditionID),
+    FOREIGN KEY (customerID) REFERENCES Customer(userID)
+);
+
+CREATE TABLE Customerconditions (
+    customerConditionsID INT PRIMARY KEY auto_increment,
+    conditionID INT NOT NULL,
+    customerID INT,
+    FOREIGN KEY (conditionID) REFERENCES healthconditions(conditionID),
+    FOREIGN KEY (customerID) REFERENCES Customer(userID)
+);
+
+
+
 
 INSERT INTO customer (username, firstName, lastName, email, password) 
 VALUES ("JJ", "Jason", "Lac", "Email", SHA("test"));
+
+INSERT INTO healthconditions (ConditionName, Description) 
+VALUES
+('Respiratory Issues', 'Cold weather can exacerbate respiratory conditions like asthma, while hot and humid conditions might trigger respiratory distress.'),
+('Allergies', 'Pollen levels tend to rise during certain weather conditions, contributing to allergies such as hay fever.'),
+('Heat-Related Illnesses', 'High temperatures can lead to heat-related illnesses like heat exhaustion or heatstroke.'),
+('Skin Conditions', 'Sun exposure can worsen skin conditions like eczema or psoriasis, and extreme cold can lead to dry and cracked skin.'),
+('Cardiovascular Issues', 'Cold weather may strain the cardiovascular system, potentially impacting individuals with heart conditions.'),
+('Joint Pain', 'Changes in temperature and humidity can affect individuals with arthritis, leading to increased joint pain.'),
+('Dehydration', 'Hot weather can increase the risk of dehydration, especially if proper hydration is not maintained.'),
+('Mental Health', 'Seasonal Affective Disorder (SAD) is a type of depression that occurs at certain times of the year, often related to changes in sunlight during different seasons.'),
+('Frostbite and Hypothermia', 'Exposure to extremely cold temperatures can lead to frostbite and hypothermia, especially if adequate protection is not in place.'),
+('Heat-Related Skin Conditions', 'Prolonged sun exposure can contribute to sunburns, which, in severe cases, can lead to more serious skin conditions.'),
+('Air Quality-Related Respiratory Issues', 'Poor air quality, often associated with specific weather conditions, can worsen respiratory conditions and contribute to overall respiratory distress.'),
+('Infectious Diseases', 'Certain weather conditions may influence the spread of infectious diseases. For example, warm and humid conditions can create breeding grounds for certain pathogens.'),
+('Insect-Borne Diseases', 'Warmer weather can lead to increased activity of disease-carrying insects like mosquitoes, potentially resulting in the spread of diseases such as West Nile virus or Zika virus.'),
+('Dehydration-Related Issues', 'High temperatures and increased physical activity in hot weather can lead to dehydration, impacting various bodily functions.'),
+('Migraines and Headaches', 'Changes in weather patterns, such as shifts in barometric pressure, can trigger migraines and headaches in some individuals.'),
+('Seasonal Allergic Rhinitis', 'Certain weather conditions, especially during specific seasons, can exacerbate symptoms of allergic rhinitis, causing sneezing, congestion, and itchy eyes.'),
+('Eye Irritations', 'Windy conditions or exposure to excessive sunlight can lead to eye irritations and discomfort.'),
+('Gastrointestinal Issues', 'Changes in temperature or exposure to extreme weather conditions may impact digestion and contribute to gastrointestinal discomfort in some individuals.'),
+('Sleep Disturbances', 'Extreme temperatures, whether hot or cold, can disrupt sleep patterns and contribute to insomnia or poor sleep quality.'),
+('Blood Pressure Fluctuations', 'Sudden changes in weather, particularly shifts in temperature, can affect blood pressure and potentially impact individuals with hypertension.');
 
 
 
