@@ -1,5 +1,6 @@
 # Health-Advice-Group
-3 Continue   W76537ASet Task BriefThe software development company you work for has secured a new contract to develop a digital solution for a charity called Health Advice Group. The charity offers information and support for environmental health issues.
+3 Continue   W76537ASet Task Brief
+The software development company you work for has secured a new contract to develop a digital solution for a charity called Health Advice Group. The charity offers information and support for environmental health issues.
 [T-Level-Digital-19540-OSC-Task-1-Jun-2023.PDF](https://github.com/DOOMswat/OCSPEC-KJ1/files/13647636/T-Level-Digital-19540-OSC-Task-1-Jun-2023.PDF)
 
 **Set Task Brief**
