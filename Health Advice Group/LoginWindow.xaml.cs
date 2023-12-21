@@ -27,24 +27,24 @@ namespace Health_Advice_Group
 
         private void btn_Login_Click(object sender, RoutedEventArgs e)
         {
-            try
+            try//validation
             {
                 MySqlConnection conn;
                 using (conn = new MySqlConnection(session.connStr))
                 {
                     conn.Open();
-                    string query = "SELECT * FROM Customer WHERE username =" +
+                    string query = "SELECT * FROM Customer WHERE username =" +//search username and password from enterered credintials
                         " @Username AND Password = SHA(@Password)";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@Username", txtBox_Username.Text.ToUpper());
-                    cmd.Parameters.AddWithValue("@Password", pasBox_Password.Password);
+                    cmd.Parameters.AddWithValue("@Username", txtBox_Username.Text.ToUpper());//all usernames must be all uppercase.
+                    cmd.Parameters.AddWithValue("@Password", pasBox_Password.Password);//Paramaters = anti-sqlInjection and stuff
 
                     using (MySqlDataReader rdr = cmd.ExecuteReader())
                     {
                         if (rdr.Read()) 
-                        {
-                            getUserDetails();
-                            Homepage homepage = new Homepage(txtBox_Username.Text.ToUpper());
+                        {//if credential are found and read go through if statement.
+                            getUserDetails();//runs sub-routine
+                            Homepage homepage = new Homepage(txtBox_Username.Text.ToUpper());//after read corerctly, closes this window and opens homepage.
                             SymptomAssessment symptomAssessment = new SymptomAssessment();
                             symptomAssessment.Show();
                             homepage.Show();
@@ -61,7 +61,7 @@ namespace Health_Advice_Group
             catch (Exception ex) {MessageBox.Show("Error: " + ex);}
         }
 
-        private void getUserDetails()
+        private void getUserDetails()//gets the username from the textBox, inserts the read data into session class.
         {
             try
             {
