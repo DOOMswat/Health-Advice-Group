@@ -16,7 +16,7 @@
                 </Rectangle>
 
 
-                <ListBox Margin="68,170,68,170">
+                <ListBox Name="ListBoxSymptoms" Margin="68,170,68,170">
                     <CheckBox Name="CB_RespiratoryIssues" Content="Respiratory Issues"/>
                     <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF" IsEnabled="False">
                         <Rectangle.RenderTransform>
@@ -228,11 +228,12 @@
                     </Rectangle>
                     <CheckBox Name="CB_BloodPressureFluctuations" Content="Blood Pressure Fluctuations"/>
                 </ListBox>
-                <Button Content="Next" HorizontalAlignment="Center" Margin="0,496,0,0" VerticalAlignment="Top" Height="30" Width="74"/>
+                <Button Name="btn_next" Content="Next" HorizontalAlignment="Center" Margin="0,468,0,0" VerticalAlignment="Top" Height="30" Width="74"/>
+                <Button Name="btn_skip" Content="Skip" HorizontalAlignment="Center" Margin="0,506,0,0" VerticalAlignment="Top" Height="19" Width="54"/>
                 <Label Content="Please check the boxes on&#xD;&#xA;the symptoms you may have." HorizontalAlignment="Center" Margin="0,116,0,0" VerticalAlignment="Top" FontSize="16" Height="54"/>
-                <Button Content="More information &#xD;&#xA;about the &#xD;&#xA;symptom selected" HorizontalAlignment="Left" Margin="250,391,0,0" VerticalAlignment="Top" Height="58" Width="104"/>
+                <Button Name="btn_moreInfo" Content="More information &#xD;&#xA;about the &#xD;&#xA;symptom selected" HorizontalAlignment="Left" Margin="250,391,0,0" VerticalAlignment="Top" Height="58" Width="104" Click="btn_moreInfo_Click"/>
                 <Border BorderBrush="Black" BorderThickness="1" Margin="68,391,174,107">
-                    <TextBox TextWrapping="Wrap"/>
+                    <TextBlock Name="txt_information" TextWrapping="Wrap" Text=""/>
                 </Border>
 
 
@@ -248,7 +249,6 @@
 
 
                 <Button Content="Button" HorizontalAlignment="Center" Margin="0,480,0,0" VerticalAlignment="Top" Height="39" Width="48"/>
-                <Label Content="Please check the boxes on&#xD;&#xA;the symptoms you may have." HorizontalAlignment="Center" Margin="0,116,0,0" VerticalAlignment="Top" FontSize="16" Height="54"/>
 
 
             </Grid>
