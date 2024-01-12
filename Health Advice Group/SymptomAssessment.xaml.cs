@@ -24,36 +24,6 @@ namespace Health_Advice_Group
             InitializeComponent();
         }
 
-        //        private void btn_moreInfo_Click(object sender, RoutedEventArgs e)
-        //        {
-        //            try
-        //            {
-        //                using (MySqlConnection conn = new MySqlConnection(session.connStr))
-        //                {
-        //                    string selectedItem = ListBoxSymptoms.SelectedItem.ToString();
-        //                    conn.Open();
-        //                    string query = $"SELECT description FROM healthconditions Where conditionName = '{selectedItem}'";
-        //                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-        //                    {
-        //                        using (MySqlDataReader rdr = cmd.ExecuteReader())
-        //                        {
-        //                            if (rdr.Read())
-        //                            {
-        //                                string desc = rdr.GetString(0);
-        //                                txt_information.Text = desc;
-        //                            }
-        //                        }
-        //                    }
-
-        //                }
-        //            }
-        //            catch { MessageBox.Show("Error"); }
-        //        }   
-        //    }
-        //}
-
-
-
         private void btn_moreInfo_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -61,7 +31,6 @@ namespace Health_Advice_Group
                 if (ListBoxSymptoms.SelectedItem != null)
                 {
                     string selectedItem = (ListBoxSymptoms.SelectedItem as CheckBox).Content.ToString();
-
                     if (!string.IsNullOrEmpty(selectedItem))
                     {
                         using (MySqlConnection conn = new MySqlConnection(session.connStr))

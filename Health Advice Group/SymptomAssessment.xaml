@@ -231,9 +231,9 @@
                 <Button Name="btn_next" Content="Next" HorizontalAlignment="Center" Margin="0,468,0,0" VerticalAlignment="Top" Height="30" Width="74"/>
                 <Button Name="btn_skip" Content="Skip" HorizontalAlignment="Center" Margin="0,506,0,0" VerticalAlignment="Top" Height="19" Width="54"/>
                 <Label Content="Please check the boxes on&#xD;&#xA;the symptoms you may have." HorizontalAlignment="Center" Margin="0,116,0,0" VerticalAlignment="Top" FontSize="16" Height="54"/>
-                <Button Name="btn_moreInfo" Content="More information &#xD;&#xA;about the &#xD;&#xA;symptom selected" HorizontalAlignment="Right" Margin="0,0,68,107" VerticalAlignment="Bottom" Height="58" Width="104" Click="btn_moreInfo_Click"/>
-                <Border BorderBrush="Black" BorderThickness="1" Margin="68,391,0,0" Height="58" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180">
-                    <TextBlock Name="txt_information" TextWrapping="Wrap" Text="" Height="56" VerticalAlignment="Center" HorizontalAlignment="Right" Width="178"/>
+                <Button Name="btn_moreInfo" Content="More Information" Margin="256,405,68,121" Click="btn_moreInfo_Click"/>
+                <Border BorderBrush="Black" BorderThickness="1" Margin="68,391,0,0" Height="58" VerticalAlignment="Top" HorizontalAlignment="Left" Width="184">
+                    <TextBlock Name="txt_information" TextWrapping="Wrap" Text="" Margin="0,0,-1,0"/>
                 </Border>
 
 
