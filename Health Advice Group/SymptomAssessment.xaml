@@ -16,7 +16,7 @@
                 </Rectangle>
 
 
-                <ListBox Name="ListBoxSymptoms" Margin="68,170,68,170">
+                <ListBox Name="ListBoxSymptoms" Margin="68,0,68,0" Height="216" VerticalAlignment="Center">
                     <CheckBox Name="CB_RespiratoryIssues" Content="Respiratory Issues"/>
                     <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF" IsEnabled="False">
                         <Rectangle.RenderTransform>
@@ -231,9 +231,9 @@
                 <Button Name="btn_next" Content="Next" HorizontalAlignment="Center" Margin="0,468,0,0" VerticalAlignment="Top" Height="30" Width="74"/>
                 <Button Name="btn_skip" Content="Skip" HorizontalAlignment="Center" Margin="0,506,0,0" VerticalAlignment="Top" Height="19" Width="54"/>
                 <Label Content="Please check the boxes on&#xD;&#xA;the symptoms you may have." HorizontalAlignment="Center" Margin="0,116,0,0" VerticalAlignment="Top" FontSize="16" Height="54"/>
-                <Button Name="btn_moreInfo" Content="More information &#xD;&#xA;about the &#xD;&#xA;symptom selected" HorizontalAlignment="Left" Margin="250,391,0,0" VerticalAlignment="Top" Height="58" Width="104" Click="btn_moreInfo_Click"/>
-                <Border BorderBrush="Black" BorderThickness="1" Margin="68,391,174,107">
-                    <TextBlock Name="txt_information" TextWrapping="Wrap" Text=""/>
+                <Button Name="btn_moreInfo" Content="More information &#xD;&#xA;about the &#xD;&#xA;symptom selected" HorizontalAlignment="Right" Margin="0,0,68,107" VerticalAlignment="Bottom" Height="58" Width="104" Click="btn_moreInfo_Click"/>
+                <Border BorderBrush="Black" BorderThickness="1" Margin="68,391,0,0" Height="58" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180">
+                    <TextBlock Name="txt_information" TextWrapping="Wrap" Text="" Height="56" VerticalAlignment="Center" HorizontalAlignment="Right" Width="178"/>
                 </Border>
 
 
@@ -249,6 +249,18 @@
 
 
                 <Button Content="Button" HorizontalAlignment="Center" Margin="0,480,0,0" VerticalAlignment="Top" Height="39" Width="48"/>
+                <TextBox Name="txt_homeAddress" HorizontalAlignment="Center" Margin="0,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" TextAlignment="Center" Height="23" SelectionBrush="#00000000" SelectionTextBrush="#00000000" Foreground="Black" Background="#00000000" BorderBrush="#00000000"/>
+                <Label Content="Post Code/Zip Code" HorizontalAlignment="Center" VerticalAlignment="Top" Width="146" HorizontalContentAlignment="Center" FontFamily="Yu Gothic" Foreground="#FF3F72AF" Margin="0,117,0,0"/>
+                <Rectangle HorizontalAlignment="Center" Height="1" Margin="0,169,0,0" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
 
 
             </Grid>

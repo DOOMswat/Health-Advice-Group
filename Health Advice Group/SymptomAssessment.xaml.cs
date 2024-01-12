@@ -24,30 +24,79 @@ namespace Health_Advice_Group
             InitializeComponent();
         }
 
+        //        private void btn_moreInfo_Click(object sender, RoutedEventArgs e)
+        //        {
+        //            try
+        //            {
+        //                using (MySqlConnection conn = new MySqlConnection(session.connStr))
+        //                {
+        //                    string selectedItem = ListBoxSymptoms.SelectedItem.ToString();
+        //                    conn.Open();
+        //                    string query = $"SELECT description FROM healthconditions Where conditionName = '{selectedItem}'";
+        //                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+        //                    {
+        //                        using (MySqlDataReader rdr = cmd.ExecuteReader())
+        //                        {
+        //                            if (rdr.Read())
+        //                            {
+        //                                string desc = rdr.GetString(0);
+        //                                txt_information.Text = desc;
+        //                            }
+        //                        }
+        //                    }
+
+        //                }
+        //            }
+        //            catch { MessageBox.Show("Error"); }
+        //        }   
+        //    }
+        //}
+
+
+
         private void btn_moreInfo_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(session.connStr))
+                if (ListBoxSymptoms.SelectedItem != null)
                 {
-                    string selectedItem = ListBoxSymptoms.SelectedValue.ToString();
-                    conn.Open();
-                    string query = $"SELECT description FROM healthconditions Where conditionName = '{selectedItem}'";
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    string selectedItem = (ListBoxSymptoms.SelectedItem as CheckBox).Content.ToString();
+
+                    if (!string.IsNullOrEmpty(selectedItem))
                     {
-                        using (MySqlDataReader rdr = cmd.ExecuteReader())
+                        using (MySqlConnection conn = new MySqlConnection(session.connStr))
                         {
-                            if (rdr.Read())
+                            conn.Open();
+                            string query = $"SELECT description FROM healthconditions WHERE conditionName = '{selectedItem}'";
+                            using (MySqlCommand cmd = new MySqlCommand(query, conn))
                             {
-                                string desc = rdr.GetString(0);
-                                txt_information.Text = desc;
+                                using (MySqlDataReader rdr = cmd.ExecuteReader())
+                                {
+                                    if (rdr.Read())
+                                    {
+                                        string desc = rdr.GetString(0);
+                                        txt_information.Text = desc;
+                                    }
+                                }
                             }
                         }
                     }
-
+                    else
+                    {
+                        MessageBox.Show("Unable to retrieve the selected symptom.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select a symptom.");
                 }
             }
-            catch { MessageBox.Show("Error"); }
-        }   
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+        }
+
     }
 }
+
