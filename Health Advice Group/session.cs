@@ -10,7 +10,8 @@ namespace Health_Advice_Group
     {
         //API KEY = daf5fcbcd2384c6eb9791539232311
         public static string request = "http://api.weatherapi.com/v1/current.json?key=daf5fcbcd2384c6eb9791539232311&q=Leeds&aqi=no";
-        public static string connStr = "server=ND-COMPSCI;" + "user=TL_S2101550;" + "database=tl_s2101550_hag;" + "port=3306;" + "password=Notre260605";
+        //public static string connStr = "server=ND-COMPSCI;" + "user=TL_S2101550;" + "database=tl_s2101550_hag;" + "port=3306;" + "password=Notre260605";
+        public static string connStr = "server=localhost;" + "user=root;" + "database=TL_S2101550_hag;" + "port=3306;" + "password=4Always12345Talisman29";
         public static string userID = "";
         public static string postCode = "";
         public static string fistName = "";

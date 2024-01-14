@@ -321,6 +321,7 @@
                         </TransformGroup>
                     </Rectangle.RenderTransform>
                 </Rectangle>
+                <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="233,174,0,0" VerticalAlignment="Top"/>
 
 
             </Grid>
