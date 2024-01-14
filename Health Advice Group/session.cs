@@ -16,7 +16,7 @@ namespace Health_Advice_Group
         public static string fistName = "";
         public static string LastName = "";
         public static string Email = "";
-        
+        public static List<string> selectedSymptoms = new List<string>();
 
     }
 }

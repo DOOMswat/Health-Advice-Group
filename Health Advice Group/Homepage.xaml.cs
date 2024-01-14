@@ -56,7 +56,7 @@ namespace Health_Advice_Group
         private void weatherStartup()
         {
             HttpClient client = new HttpClient();
-            var response = client.GetStringAsync(session.request).Result;
+            var response = client.GetStringAsync(session.request).Result;   
             var jsonObject = JsonNode.Parse(response);
             string temp = jsonObject["current"]["temp_c"].ToString();
             string location = jsonObject["location"]["name"].ToString();
@@ -68,5 +68,9 @@ namespace Health_Advice_Group
             lbl_welcomeMsg.Content = $"Welcome back, {session.fistName}!";
         }
 
+        private void txt_searchbar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
