@@ -16,12 +16,10 @@ CREATE TABLE Staff (
     Password VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE Customerconditions (
-    customerConditionsID INT PRIMARY KEY auto_increment,
-    conditionID INT NOT NULL,
-    customerID INT,
-    FOREIGN KEY (conditionID) REFERENCES healthconditions(conditionID),
-    FOREIGN KEY (customerID) REFERENCES Customer(userID)
+CREATE TABLE healthconditions (
+	conditionID INT PRIMARY KEY auto_increment,
+    conditionName VARCHAR(50) NOT NULL, 
+    description VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE Customerconditions (
