@@ -64,8 +64,8 @@
         </Style>
     </Window.Resources>
 
-    <TabControl>
-        <TabItem Header="Symptoms">
+    <TabControl Name="myTabControl">
+        <TabItem Name="symptomsTab" Header="Symptoms">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -133,7 +133,7 @@
                             </TransformGroup>
                         </Rectangle.RenderTransform>
                     </Rectangle>
-                    <CheckBox Name="CB_JointPJointPain" Content="Joint Joint Pain"/>
+                    <CheckBox Name="CB_JointPJointPain" Content="Joint Pain"/>
                     <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
                         <Rectangle.RenderTransform>
                             <TransformGroup>
@@ -289,7 +289,7 @@
                     </Rectangle>
                     <CheckBox Name="CB_BloodPressureFluctuations" Content="Blood Pressure Fluctuations"/>
                 </ListBox>
-                <Button Name="btn_next" Style="{DynamicResource RoundedButtonStyle}" Content="Next" HorizontalAlignment="Center" Margin="0,481,0,0" Width="74" BorderBrush="#FF112D4E" BorderThickness="2,2,2,2" Foreground="#FF3F72AF" FontFamily="Yu Gothic" FontWeight="Bold" FontSize="14" Background="White" Height="30" VerticalAlignment="Top"/>
+                <Button Name="btn_next" Style="{DynamicResource RoundedButtonStyle}" Content="Next" HorizontalAlignment="Center" Margin="0,481,0,0" Width="74" BorderBrush="#FF112D4E" BorderThickness="2,2,2,2" Foreground="#FF3F72AF" FontFamily="Yu Gothic" FontWeight="Bold" FontSize="14" Background="White" Height="30" VerticalAlignment="Top" Click="btn_next_Click"/>
                 <Button Name="btn_skip" Style="{DynamicResource RoundedButtonStyle}" BorderBrush="#FF112D4E" BorderThickness="1,1,1,1" Foreground="#FF3F72AF" FontFamily="Yu Gothic" Content="Skip" HorizontalAlignment="Center" Margin="0,516,0,0" Width="54" Background="White" Height="22" VerticalAlignment="Top"/>
                 <Label Content="Please check the boxes on&#xD;&#xA;the symptoms you may have." HorizontalAlignment="Center" Margin="0,116,0,0" VerticalAlignment="Top" FontSize="16" Height="54"/>
                 <Border BorderBrush="Black" BorderThickness="1" Margin="0,391,0,0" Height="85" VerticalAlignment="Top" HorizontalAlignment="Center" Width="286">
@@ -299,16 +299,13 @@
 
             </Grid>
         </TabItem>
-        <TabItem Header="Personal information">
+        <TabItem Name="personalInfoTab" Header="Personal information">
             <Grid>
                 <Rectangle HorizontalAlignment="Center" Width="244" Height="134" VerticalAlignment="Top">
                     <Rectangle.Fill>
                         <ImageBrush ImageSource="/HAGLOGO2.png"/>
                     </Rectangle.Fill>
                 </Rectangle>
-
-
-                <Button Content="Button" HorizontalAlignment="Center" Margin="0,480,0,0" VerticalAlignment="Top" Height="39" Width="48"/>
                 <TextBox Name="txt_homeAddress" HorizontalAlignment="Center" Margin="0,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" TextAlignment="Center" Height="23" SelectionBrush="#00000000" SelectionTextBrush="#00000000" Foreground="Black" Background="#00000000" BorderBrush="#00000000"/>
                 <Label Content="Post Code/Zip Code" HorizontalAlignment="Center" VerticalAlignment="Top" Width="146" HorizontalContentAlignment="Center" FontFamily="Yu Gothic" Foreground="#FF3F72AF" Margin="0,117,0,0"/>
                 <Rectangle HorizontalAlignment="Center" Height="1" Margin="0,169,0,0" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
@@ -321,24 +318,50 @@
                         </TransformGroup>
                     </Rectangle.RenderTransform>
                 </Rectangle>
-                <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="233,174,0,0" VerticalAlignment="Top"/>
-
-
+                <TextBox x:Name="txt_weight" HorizontalAlignment="Center" Margin="0,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" TextAlignment="Center" Height="23" SelectionBrush="#00000000" SelectionTextBrush="#00000000" Foreground="Black" Background="#00000000" BorderBrush="#00000000"/>
+                <Label Content="Weight (Kilograms)" HorizontalAlignment="Center" VerticalAlignment="Top" Width="146" HorizontalContentAlignment="Center" FontFamily="Yu Gothic" Foreground="#FF3F72AF" Margin="0,174,0,0"/>
+                <Rectangle HorizontalAlignment="Center" Height="1" Margin="0,226,0,0" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Button x:Name="btn_nextPI" Style="{DynamicResource RoundedButtonStyle}" Content="Next" HorizontalAlignment="Center" Margin="0,481,0,0" Width="74" BorderBrush="#FF112D4E" BorderThickness="2,2,2,2" Foreground="#FF3F72AF" FontFamily="Yu Gothic" FontWeight="Bold" FontSize="14" Background="White" Height="30" VerticalAlignment="Top" Click="btn_nextPI_Click"/>
+                <Label Content="Height (Centimetres)" HorizontalAlignment="Center" VerticalAlignment="Top" Width="146" HorizontalContentAlignment="Center" FontFamily="Yu Gothic" Foreground="#FF3F72AF" Margin="0,234,0,0"/>
+                <Rectangle HorizontalAlignment="Center" Height="1" Margin="0,286,0,0" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <TextBox x:Name="txt_height" HorizontalAlignment="Center" Margin="0,264,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" TextAlignment="Center" Height="23" SelectionBrush="#00000000" SelectionTextBrush="#00000000" Foreground="Black" Background="#00000000" BorderBrush="#00000000"/>
+                <Button x:Name="btn_back" Style="{DynamicResource RoundedButtonStyle}" BorderBrush="#FF112D4E" BorderThickness="1,1,1,1" Foreground="#FF3F72AF" FontFamily="Yu Gothic" Content="Back" HorizontalAlignment="Center" Margin="0,516,0,0" Width="54" Background="White" Height="22" VerticalAlignment="Top"/>
             </Grid>
         </TabItem>
-        <TabItem Header="Confirmation">
+        <TabItem Name="confirmationTab" Header="Confirmation">
             <Grid Height="560" Width="426">
                 <Rectangle HorizontalAlignment="Center" Width="244" Height="134" VerticalAlignment="Top">
                     <Rectangle.Fill>
                         <ImageBrush ImageSource="/HAGLOGO2.png"/>
                     </Rectangle.Fill>
                 </Rectangle>
-
-
-                <Button Content="Button" HorizontalAlignment="Center" Margin="0,480,0,0" VerticalAlignment="Top" Height="39" Width="48"/>
-                <Label Content="Please check the boxes on&#xD;&#xA;the symptoms you may have." HorizontalAlignment="Center" Margin="0,116,0,0" VerticalAlignment="Top" FontSize="16" Height="54"/>
-
-
+                <TextBlock HorizontalAlignment="Center" Margin="0,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="33" Width="180" TextAlignment="Center" FontSize="20" FontFamily="Yu Gothic" Foreground="#FF3F72AF"><Run Language="en-gb" Text="Confirm Details"/></TextBlock>
+                <TextBlock HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top" Height="25" Width="203" TextAlignment="Center" FontSize="16" FontFamily="Yu Gothic" Text="Symptoms" Foreground="#FF020202" TextWrapping="Wrap"/>
+                <Button x:Name="btn_Confirm" Style="{DynamicResource RoundedButtonStyle}" Content="Confirm" HorizontalAlignment="Left" Margin="174,481,0,0" Width="74" BorderBrush="#FF112D4E" BorderThickness="2,2,2,2" Foreground="#FF3F72AF" FontFamily="Yu Gothic" FontWeight="Bold" FontSize="14" Background="White" Height="30" VerticalAlignment="Top" Click="btn_confirm_click"/>
+                <Button x:Name="btn_back_Copy" Style="{DynamicResource RoundedButtonStyle}" BorderBrush="#FF112D4E" BorderThickness="1,1,1,1" Foreground="#FF3F72AF" FontFamily="Yu Gothic" Content="Back" HorizontalAlignment="Left" Margin="184,516,0,0" Width="54" Background="White" Height="22" VerticalAlignment="Top"/>
+                <TextBlock HorizontalAlignment="Left" Margin="211,146,0,0" VerticalAlignment="Top" Height="25" Width="205" TextAlignment="Center" FontSize="16" FontFamily="Yu Gothic" Foreground="#FF020202" TextWrapping="Wrap"><Run Language="en-gb" Text="User Details"/></TextBlock>
+                <ListBox Name="listBox_Symptoms" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="25,172,228,84"/>
+                <Border BorderBrush="#FFABADB3" BorderThickness="1" Margin="227,172,26,84">
+                    <TextBlock Name="txt_UserDetails" TextWrapping="Wrap"><Run Language="en-gb" Text="Username:"/><LineBreak/><Run Language="en-gb" Text="First Name:"/><LineBreak/><Run Language="en-gb" Text="Last Name:"/><LineBreak/><Run Language="en-gb" Text="Email Address:"/><LineBreak/><Run Text="Post Code:"/><LineBreak/><Run Text="Weight:"/><LineBreak/><Run Text="Height:"/></TextBlock>
+                </Border>
             </Grid>
         </TabItem>
     </TabControl>

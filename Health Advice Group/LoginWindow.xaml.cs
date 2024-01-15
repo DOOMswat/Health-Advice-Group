@@ -80,6 +80,7 @@ namespace Health_Advice_Group
                                 string userID = rdr["userID"].ToString();
                                 string firstName = rdr["firstName"].ToString();
                                 string lastName = rdr["lastName"].ToString() ;
+                                session.username = txtBox_Username.Text;
                                 session.userID = userID;
                                 session.fistName = firstName;
                                 session.LastName = lastName;
