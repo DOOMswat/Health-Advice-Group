@@ -114,6 +114,58 @@
                 <TabItem Header="Homepage">
                     <Grid>
                         <Label Name="lbl_welcomeMsg" Content="Label" HorizontalAlignment="Center" VerticalAlignment="Top" Width="285" Height="43" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16"/>
+                        <Grid Margin="10,160,415,102">
+                            <Border BorderBrush="Black" BorderThickness="1"/>
+                            <TextBlock Name="txtBlock_UV" HorizontalAlignment="Center" TextWrapping="Wrap" Text="UV" VerticalAlignment="Center" Height="91" Width="90" TextAlignment="Center"/>
+                        </Grid>
+                        <Grid Margin="150,160,275,102">
+                            <Border BorderBrush="Black" BorderThickness="1"/>
+                            <TextBlock Name="txtBlock_WindDirection" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Wind Direction" VerticalAlignment="Center" Height="91" Width="90" TextAlignment="Center" FontSize="14"/>
+                        </Grid>
+                        <Grid Margin="286,43,10,102">
+                            <Border BorderBrush="Black" BorderThickness="1"/>
+                            <TextBlock Name="txtBlock_HealthInfo" HorizontalAlignment="Center" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="91" Width="90" TextAlignment="Center"/>
+                        </Grid>
+
+
+
+
+                        <Grid Margin="33,0,-33,0" Height="386" VerticalAlignment="Top">
+                            <Grid Margin="10,289,449,6">
+                                <Border BorderBrush="Black" BorderThickness="1"/>
+                                <TextBlock Name="Day1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="91" Width="90" TextAlignment="Center"/>
+
+                            </Grid>
+                            <Grid Margin="105,289,354,6">
+                                <Border BorderBrush="Black" BorderThickness="1"/>
+                                <TextBlock Name="Day2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="91" Width="90" TextAlignment="Center"/>
+
+
+                            </Grid>
+                            <Grid Margin="200,289,259,6">
+                                <Border BorderBrush="Black" BorderThickness="1"/>
+                                <TextBlock Name="Day3" HorizontalAlignment="Center" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="91" Width="90" TextAlignment="Center"/>
+
+
+                            </Grid>
+                            <Grid Margin="295,289,164,6">
+                                <Border BorderBrush="Black" BorderThickness="1"/>
+                                <TextBlock Name="Day4" HorizontalAlignment="Center" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="91" Width="90" TextAlignment="Center"/>
+
+
+                            </Grid>
+                            <Grid Margin="390,289,69,6">
+                                <Border BorderBrush="Black" BorderThickness="1"/>
+                                <TextBlock Name="Day5" HorizontalAlignment="Center" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="91" Width="90" TextAlignment="Center"/>
+
+
+                            </Grid>
+
+
+
+
+                        </Grid>
+
 
                     </Grid>
                 </TabItem>

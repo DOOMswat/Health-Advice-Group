@@ -27,27 +27,36 @@ namespace Health_Advice_Group
 
         private void btn_Login_Click(object sender, RoutedEventArgs e)
         {
-            try//validation
+            try
             {
                 MySqlConnection conn;
                 using (conn = new MySqlConnection(session.connStr))
                 {
                     conn.Open();
-                    string query = "SELECT * FROM Customer WHERE username =" +//search username and password from enterered credintials
-                        " @Username AND Password = SHA(@Password)";
+                    string query = "SELECT * FROM Customer WHERE username = @Username AND Password = SHA(@Password)";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@Username", txtBox_Username.Text.ToUpper());//all usernames must be all uppercase.
-                    cmd.Parameters.AddWithValue("@Password", pasBox_Password.Password);//Paramaters = anti-sqlInjection and stuff
+                    cmd.Parameters.AddWithValue("@Username", txtBox_Username.Text.ToUpper());
+                    cmd.Parameters.AddWithValue("@Password", pasBox_Password.Password);
 
                     using (MySqlDataReader rdr = cmd.ExecuteReader())
                     {
-                        if (rdr.Read()) 
-                        {//if credential are found and read go through if statement.
-                            getUserDetails();//runs sub-routine
-                            Homepage homepage = new Homepage(txtBox_Username.Text.ToUpper());//after read corerctly, closes this window and opens homepage.
-                            SymptomAssessment symptomAssessment = new SymptomAssessment();
-                            symptomAssessment.Show();
-                            homepage.Show();
+                        if (rdr.Read())
+                        {
+                            getUserDetails();
+
+                            double weight;
+                            if (double.TryParse(session.weight, out weight) && weight > 0)
+                            {
+                                session.request = $"http://api.weatherapi.com/v1/forecast.json?key=daf5fcbcd2384c6eb9791539232311&q={session.postCode}&days=5&aqi=no&alerts=no";
+                                Homepage homepage = new Homepage(txtBox_Username.Text.ToUpper());
+                                homepage.Show();
+                            }
+                            else
+                            {
+                                SymptomAssessment symptomAssessment = new SymptomAssessment();
+                                symptomAssessment.Show();
+                            }
+
                             this.Close();
                         }
                         else
@@ -56,10 +65,13 @@ namespace Health_Advice_Group
                         }
                     }
                 }
-
             }
-            catch (Exception ex) {MessageBox.Show("Error: " + ex);}
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex);
+            }
         }
+
 
         private void getUserDetails()//gets the username from the textBox, inserts the read data into session class.
         {
@@ -68,7 +80,7 @@ namespace Health_Advice_Group
                 using (MySqlConnection conn = new MySqlConnection(session.connStr))
                 {
                     conn.Open();
-                    string query = "SELECT userID, firstName, lastName, email FROM Customer WHERE username = @Username";
+                    string query = "SELECT firstName, lastName, email, weight, location FROM Customer WHERE username = @Username";
                     using(MySqlCommand cmd = new MySqlCommand( query, conn))
                     {
                         cmd.Parameters.AddWithValue("@Username", txtBox_Username.Text.ToUpper());
@@ -77,15 +89,24 @@ namespace Health_Advice_Group
                         {
                             if (rdr.Read())
                             {
-                                string userID = rdr["userID"].ToString();
                                 string firstName = rdr["firstName"].ToString();
                                 string lastName = rdr["lastName"].ToString() ;
                                 session.username = txtBox_Username.Text;
-                                session.userID = userID;
                                 session.fistName = firstName;
                                 session.LastName = lastName;
+                                session.weight = rdr["weight"].ToString();
+                                session.Email = rdr["email"].ToString();
+                                session.postCode = rdr["location"].ToString();
                             }
                         }
+                        string getLastCustomerIDQuery = $"SELECT userID FROM Customer WHERE username = '{session.username}'";
+                        int customerID;
+                        using (MySqlCommand cmd1 = new MySqlCommand(getLastCustomerIDQuery, conn))
+                        {
+                            customerID = Convert.ToInt32(cmd1.ExecuteScalar());
+                        }
+                        session.userID = customerID;
+
 
                     }
                 }

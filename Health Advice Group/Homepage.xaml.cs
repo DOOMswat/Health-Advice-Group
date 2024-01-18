@@ -55,6 +55,7 @@ namespace Health_Advice_Group
 
         private void weatherStartup()
         {
+            //Left Side
             HttpClient client = new HttpClient();
             var response = client.GetStringAsync(session.request).Result;   
             var jsonObject = JsonNode.Parse(response);
@@ -66,9 +67,43 @@ namespace Health_Advice_Group
             lbl_text.Content = $"{text}";
             lbl_location.Content = $"Location:\n{location}";
             lbl_welcomeMsg.Content = $"Welcome back, {session.fistName}!";
+
+            string uv = jsonObject["current"]["uv"].ToString();
+            string windDirection = jsonObject["current"]["wind_dir"].ToString();
+            txtBlock_UV.Text = $"UV Index: {uv}";
+            txtBlock_WindDirection.Text = $"Wind Direction: {windDirection}";
+            var forecast = jsonObject["forecast"]["forecastday"];
+            if (forecast is JsonArray forecastArray && forecastArray.Count > 0)
+            {
+                for (int i = 0; i < Math.Min(forecastArray.Count, 7); i++)
+                {
+                    string date = forecast[i]["date"].ToString();
+                    string temperature = forecast[i]["day"]["avgtemp_c"].ToString();
+
+                    switch (i)
+                    {
+                        case 0:
+                            Day1.Text = $"{date}:\n{temperature}°C";
+                            break;
+                        case 1:
+                            Day2.Text = $"{date}:\n{temperature}°C";
+                            break;
+                        case 2:
+                            Day3.Text = $"{date}:\n{temperature}°C";
+                            break;
+                        case 3:
+                            Day4.Text = $"{date}:\n{temperature}°C";
+                            break;
+                        case 4:
+                            Day5.Text = $"{date}:\n{temperature}°C";
+                            break;
+                    }
+                }
+            }
         }
 
-        private void txt_searchbar_TextChanged(object sender, TextChangedEventArgs e)
+
+            private void txt_searchbar_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }

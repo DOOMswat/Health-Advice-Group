@@ -67,6 +67,9 @@
     <TabControl Name="myTabControl">
         <TabItem Name="symptomsTab" Header="Symptoms">
             <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
@@ -77,7 +80,7 @@
                 </Rectangle>
 
 
-                <ListBox Name="ListBoxSymptoms" Margin="0,170,0,0" SelectionChanged="ListBoxSymptoms_SelectionChanged" HorizontalAlignment="Center" Width="286" Height="216" VerticalAlignment="Top">
+                <ListBox Name="ListBoxSymptoms" SelectionChanged="ListBoxSymptoms_SelectionChanged" HorizontalAlignment="Center" Width="286" Height="216" VerticalAlignment="Center">
                     <CheckBox Name="CB_RespiratoryIssues" Content="Respiratory Issues"/>
                     <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF" IsEnabled="False">
                         <Rectangle.RenderTransform>
@@ -307,7 +310,7 @@
                     </Rectangle.Fill>
                 </Rectangle>
                 <TextBox Name="txt_homeAddress" HorizontalAlignment="Center" Margin="0,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" TextAlignment="Center" Height="23" SelectionBrush="#00000000" SelectionTextBrush="#00000000" Foreground="Black" Background="#00000000" BorderBrush="#00000000"/>
-                <Label Content="Post Code/Zip Code" HorizontalAlignment="Center" VerticalAlignment="Top" Width="146" HorizontalContentAlignment="Center" FontFamily="Yu Gothic" Foreground="#FF3F72AF" Margin="0,117,0,0"/>
+                <Label Content="Location (Post Code/City/Country)" HorizontalAlignment="Center" VerticalAlignment="Top" Width="214" HorizontalContentAlignment="Center" FontFamily="Yu Gothic" Foreground="#FF3F72AF" Margin="0,117,0,0"/>
                 <Rectangle HorizontalAlignment="Center" Height="1" Margin="0,169,0,0" Stroke="#FF3F72AF" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.5,0.5" Fill="#FF3F72AF">
                     <Rectangle.RenderTransform>
                         <TransformGroup>

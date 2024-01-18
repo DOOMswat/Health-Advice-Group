@@ -21,9 +21,26 @@ namespace Health_Advice_Group
     /// </summary>
     public partial class SymptomAssessment : Window
     {
+        private System.Windows.Threading.DispatcherTimer timer;
         public SymptomAssessment()
         {
             InitializeComponent();
+            timer = new System.Windows.Threading.DispatcherTimer();
+            timer.Tick += new EventHandler(timerTickyTocky);
+            timer.Interval = new TimeSpan(0, 0, 2); // Update every 2+ seconds cuz not work without tick for some reason (almost realtime)
+            timer.Start();
+            confirm();
+
+            foreach (var symptomCheckBox in ListBoxSymptoms.Items.OfType<CheckBox>())
+            {
+                symptomCheckBox.Checked += SymptomCheckBox_Checked;
+                symptomCheckBox.Unchecked += SymptomCheckBox_Unchecked;
+            }
+        }
+    
+        private void timerTickyTocky(object sender, EventArgs e)
+        {
+            confirm();
         }
         private void btn_moreInfo_Click(object sender, RoutedEventArgs e)
         {
@@ -89,7 +106,7 @@ namespace Health_Advice_Group
                         }conn.Close();
                     }else {MessageBox.Show("Unable to retrieve the selected symptom.");}
                 }else{ MessageBox.Show("Please select a symptom."); }
-            }catch (Exception ex){MessageBox.Show($"An error occurred: {ex.Message}");}
+            }catch (Exception ex){}
         }
 
         private void btn_next_Click(object sender, RoutedEventArgs e)
@@ -123,6 +140,9 @@ namespace Health_Advice_Group
                     $"Weight: {session.weight}kg\n" +
                     $"Height: {session.height}cm";
             }
+
+
+
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred: {ex.Message}");
@@ -139,7 +159,6 @@ namespace Health_Advice_Group
                 }
                 else
                 {
-                    confirm();
                     session.postCode = txt_homeAddress.Text;
                     session.weight = txt_weight.Text;
                     session.height = txt_height.Text;
@@ -150,8 +169,80 @@ namespace Health_Advice_Group
 
         private void btn_confirm_click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(session.connStr))
+                {
+                    conn.Open();
+                    string updateWeightAndHeight = $"UPDATE Customer SET weight = '{session.weight}', height = '{session.height}', location = '{session.postCode}' WHERE userID = '{session.userID}'";
+                    session.request = $"http://api.weatherapi.com/v1/forecast.json?key=daf5fcbcd2384c6eb9791539232311&q={session.postCode}&days=5&aqi=yes&alerts=no";
+                    using (MySqlCommand cmd = new MySqlCommand(updateWeightAndHeight, conn))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    string getLastCustomerIDQuery = $"SELECT userID FROM Customer WHERE username = '{session.username}'";
+                    int customerID;
+                    using (MySqlCommand cmd1 = new MySqlCommand(getLastCustomerIDQuery, conn))
+                    {
+                        customerID = Convert.ToInt32(cmd1.ExecuteScalar());
+                    }
+                    session.userID = customerID;
 
+
+
+                    foreach (string symptom in session.selectedSymptoms)
+                    {
+
+                        string getConditionIDQuery = $"SELECT conditionID FROM healthconditions WHERE conditionName = '{symptom}'";
+                        int conditionID;
+                        using (MySqlCommand cmd = new MySqlCommand(getConditionIDQuery, conn)){conditionID = Convert.ToInt32(cmd.ExecuteScalar()); }
+                        string insertCustomerConditionsQuery = $"INSERT INTO Customerconditions (conditionID, customerID) VALUES ({conditionID}, {session.userID})";
+                        using (MySqlCommand cmd = new MySqlCommand(insertCustomerConditionsQuery, conn))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                    conn.Close();
+                    MessageBox.Show("Information added to the database successfully!");
+                    Homepage homepage = new Homepage(session.username);
+                    homepage.Show();
+                    this.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+        }
+
+
+        private void SymptomCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            if (sender is CheckBox checkBox)
+            {
+                // Add the checked symptom to the list
+                string symptom = checkBox.Content.ToString();
+                if (!session.selectedSymptoms.Contains(symptom))
+                {
+                    session.selectedSymptoms.Add(symptom);
+                }
+            }
+        }
+
+        private void SymptomCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (sender is CheckBox checkBox)
+            {
+                // Remove the unchecked symptom from the list
+                string symptom = checkBox.Content.ToString();
+                session.selectedSymptoms.Remove(symptom);
+            }
         }
     }
 }
- 
+
+
+
+
+

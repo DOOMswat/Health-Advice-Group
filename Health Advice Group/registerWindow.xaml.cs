@@ -53,9 +53,8 @@ namespace Health_Advice_Group
                         }
                     }
 
-                    string insertCustomerQuery = "INSERT INTO customer (username, " +
-                        "firstName, lastName, email, password) " +
-                        "VALUES(@userName,@firstName,@lastName,@emailAddress,SHA(@passWord));";
+                    string insertCustomerQuery = "INSERT INTO customer (username, firstName, lastName, email, password, weight, height) " +
+                                                 "VALUES (@userName, @firstName, @lastName, @emailAddress, SHA(@passWord), '0', '0')";
                     MySqlCommand insertCustomerCommand = new MySqlCommand(insertCustomerQuery, conn);
                     insertCustomerCommand.Parameters.AddWithValue("@userName", txt_Username.Text.ToUpper());
                     insertCustomerCommand.Parameters.AddWithValue("@firstName", txt_Forename.Text);
